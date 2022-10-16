@@ -1,7 +1,12 @@
 module.exports = function (wallaby) {
   return {
-    files: ["src/**/*.ts", "examples/**/*.txt", "!src/**/__tests__/*.ts"],
-    tests: ["src/**/__tests__/*.ts"],
+    files: [
+      "packages/generator/src/**/*.ts",
+      "examples/**/*.txt",
+      "configs/**/*.json",
+      "!packages/generator/src/**/__tests__/*.ts",
+    ],
+    tests: ["packages/generator/src/**/__tests__/*.ts"],
     env: { type: "node", runner: "node" },
     testFramework: "jest",
     debug: true,

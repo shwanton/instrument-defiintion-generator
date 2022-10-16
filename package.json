@@ -3,9 +3,11 @@
   "author": "Shawn Dempsey <shwanton@gmail.com>",
   "private": true,
   "version": "1.0.0",
-  "workspaces": [
-    "packages/*"
-  ],
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
   "scripts": {
     "generate": "yarn workspace generator start",
     "test": "yarn workspace generator test",

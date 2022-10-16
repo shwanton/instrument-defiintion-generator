@@ -10,10 +10,6 @@ function readExampleTextFile(filename: string): string {
   return readFileSync(path.join(PWD, "examples", filename), "utf8");
 }
 
-function readExampleTextFile(filename: string): string {
-  return readFileSync(path.join(PWD, "examples", filename), "utf8");
-}
-
 function readExampleJSONconfig(filename: string): Config {
   const json = readFileSync(path.join(PWD, "configs", filename), "utf8");
   return JSON.parse(json);
