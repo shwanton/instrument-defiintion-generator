@@ -2,7 +2,7 @@ import path from "path";
 import { readFileSync } from "fs";
 
 import type { Config } from "../generator";
-import { genDefinitions } from "../generator";
+import { genDefinitionText } from "../generator";
 
 // it.skip("should create empty definitions from empty config json", () => {
 //   const filename = path.join(__dirname, "../../examples", "template.txt");
@@ -31,7 +31,7 @@ it("should create blofeld definitions from config json", () => {
   const json = readFileSync(json_filename, "utf8");
 
   const config = JSON.parse(json) as Config;
-  expect(genDefinitions(config)).toEqual(content);
+  expect(genDefinitionText(config)).toEqual(content);
 });
 
 it("should create norddrum3 definitions from config json", () => {
@@ -46,7 +46,7 @@ it("should create norddrum3 definitions from config json", () => {
   const json = readFileSync(json_filename, "utf8");
 
   const config = JSON.parse(json) as Config;
-  expect(genDefinitions(config)).toEqual(content);
+  expect(genDefinitionText(config)).toEqual(content);
 });
 
 it("should create circuit_tracks definitions from config json", () => {
@@ -61,7 +61,7 @@ it("should create circuit_tracks definitions from config json", () => {
   const json = readFileSync(json_filename, "utf8");
 
   const config = JSON.parse(json) as Config;
-  expect(genDefinitions(config)).toEqual(content);
+  expect(genDefinitionText(config)).toEqual(content);
 });
 
 it("should create rample definitions from config json", () => {
@@ -72,5 +72,5 @@ it("should create rample definitions from config json", () => {
   const json = readFileSync(json_filename, "utf8");
 
   const config = JSON.parse(json) as Config;
-  expect(genDefinitions(config)).toEqual(content);
+  expect(genDefinitionText(config)).toEqual(content);
 });

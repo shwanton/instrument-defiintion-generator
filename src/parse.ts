@@ -3,7 +3,7 @@ import { createReadStream, writeFileSync } from "fs";
 import { createInterface } from "readline";
 
 async function* genLines(): AsyncGenerator<string> {
-  const filename = path.join(__dirname, "../", "input.txt");
+  const filename = path.join(__dirname, "../tmp", "input.txt");
   const fileStream = createReadStream(filename);
 
   const readline = createInterface({
@@ -49,5 +49,5 @@ const CC_REGEX = /(\d+)\s(.*)$/;
   }
 
   const json = JSON.stringify(lines);
-  writeFileSync("ouput.json", json);
+  writeFileSync("../tmp/output.json", json);
 })();

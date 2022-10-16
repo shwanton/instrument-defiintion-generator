@@ -1,7 +1,7 @@
-import { type Config, genDefinitions } from "./generator";
+import { type Config, genDefinitionText } from "./generator";
 
-import config from "../configs/rample.json";
+import config from "../configs/circuit_tracks.json";
 
-const result = genDefinitions(config as Config);
+const result = genDefinitionText(config as Config);
 
 console.log(result);
