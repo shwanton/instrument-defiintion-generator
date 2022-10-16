@@ -1,0 +1,220 @@
+{
+  "VERSION": 1,
+  "TRACKNAME": "NordDrum3P_GLOBAL",
+  "TYPE": "DRUM",
+  "OUTPORT": null,
+  "OUTCHAN": 11,
+  "INPORT": "NONE",
+  "INCHAN": "ALL",
+  "DRUMLANES": [
+    {
+      "number": "8:NULL:02:50",
+      "name": "GHOSTSNARE"
+    },
+    {
+      "number": "7:NULL:01:50",
+      "name": "GHOSTKICK"
+    },
+    {
+      "number": "6:NULL:11:68",
+      "name": "LASER"
+    },
+    {
+      "number": "5:NULL:11:67",
+      "name": "TOM"
+    },
+    {
+      "number": "4:NULL:11:66",
+      "name": "RIDE"
+    },
+    {
+      "number": "3:NULL:11:65",
+      "name": "HIHAT"
+    },
+    {
+      "number": "2:NULL:11:64",
+      "name": "SNARE"
+    },
+    {
+      "number": "1:NULL:11:63",
+      "name": "KICK"
+    }
+  ],
+  "PC": [
+    {
+      "number": 1,
+      "name": "INIT"
+    },
+    {
+      "number": "1:1:NULL",
+      "name": "B01"
+    }
+  ],
+  "CC": [
+    {
+      "number": 7,
+      "name": "Level"
+    },
+    {
+      "number": 10,
+      "name": "Pan"
+    },
+    {
+      "number": 12,
+      "name": "Reverb Type"
+    },
+    {
+      "number": 13,
+      "name": "Reverb Color"
+    },
+    {
+      "number": 14,
+      "name": "Noise Filter Frequency"
+    },
+    {
+      "number": 15,
+      "name": "Noise Filter Type"
+    },
+    {
+      "number": 16,
+      "name": "Noise Dyn Filter"
+    },
+    {
+      "number": 17,
+      "name": "Noise Filter Resonance"
+    },
+    {
+      "number": 18,
+      "name": "Noise Level"
+    },
+    {
+      "number": 19,
+      "name": "Tone Level"
+    },
+    {
+      "number": 20,
+      "name": "Noise Decay Mode"
+    },
+    {
+      "number": 21,
+      "name": "Noise Decay"
+    },
+    {
+      "number": 23,
+      "name": "Dist Amount"
+    },
+    {
+      "number": 24,
+      "name": "Dist Type"
+    },
+    {
+      "number": 25,
+      "name": "EQ Frequency"
+    },
+    {
+      "number": 26,
+      "name": "EQ Gain"
+    },
+    {
+      "number": 30,
+      "name": "Tone Spectra"
+    },
+    {
+      "number": 31,
+      "name": "Tone Pitch MSB"
+    },
+    {
+      "number": 44,
+      "name": "Delay Rate"
+    },
+    {
+      "number": 45,
+      "name": "Delay Feedback"
+    },
+    {
+      "number": 46,
+      "name": "Tone Wave"
+    },
+    {
+      "number": 47,
+      "name": "Delay Amount"
+    },
+    {
+      "number": 48,
+      "name": "Reverb Amount"
+    },
+    {
+      "number": 49,
+      "name": "Tone Decay Mode"
+    },
+    {
+      "number": 50,
+      "name": "Tone Decay"
+    },
+    {
+      "number": 52,
+      "name": "Tone Freq"
+    },
+    {
+      "number": 53,
+      "name": "Tone Dyn Filter"
+    },
+    {
+      "number": 54,
+      "name": "Tone Bend Amount"
+    },
+    {
+      "number": 55,
+      "name": "Tone Bend Time"
+    },
+    {
+      "number": 56,
+      "name": "Click Level"
+    },
+    {
+      "number": 57,
+      "name": "Click Type"
+    },
+    {
+      "number": 59,
+      "name": "Mono Group"
+    },
+    {
+      "number": 63,
+      "name": "Tone Pitch LSB"
+    },
+    {
+      "number": 70,
+      "name": "Channel Select"
+    }
+  ],
+  "ASSIGN": [
+    {
+      "potNumber": 1,
+      "type": "CC",
+      "value": 70,
+      "comment": "Channel select"
+    },
+    {
+      "potNumber": 2,
+      "type": "CC",
+      "value": 30,
+      "comment": "Tone Spectra"
+    },
+    {
+      "potNumber": 3,
+      "type": "CC",
+      "value": 31,
+      "comment": "Tone Pitch MSB"
+    }
+  ],
+  "AUTOMATION": [
+    {
+      "type": "CC",
+      "value": 23,
+      "default": 20,
+      "comment": "Dist Amount"
+    }
+  ],
+  "COMMENT": "Nord drum in global mode, except two additional drum lanes in Local mode for pitched-down ghost notes."
+}

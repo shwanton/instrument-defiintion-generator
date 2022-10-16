@@ -13,6 +13,7 @@
     "format": "yarn fix && yarn pretty",
     "test": "jest",
     "pretty": "prettier --write 'src/**/*.ts'",
+    "parse": "ts-node src/parse.ts",
     "start": "ts-node src/index.ts"
   },
   "devDependencies": {

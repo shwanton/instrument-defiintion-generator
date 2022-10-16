@@ -16,12 +16,15 @@ async function* generateFileContent(): AsyncGenerator<string> {
   }
 }
 
+const CC_REGEX = /(\d+)\s(.*)/;
+// const DRUMLANE_REGEX = /^(.*)\s([A-Z]+)/;
+
 (async () => {
   const rows = [];
   for await (const line of generateFileContent()) {
     // console.log(line);
 
-    const parts = line.match(/(\d+)\s(.*)/);
+    const parts = line.match(CC_REGEX);
     if (parts == null) {
       break;
     }

@@ -6,21 +6,43 @@ type MIDIChannels =  1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 
 // prettier-ignore
 type OutPorts = "A" | "B" | "C" | "D" | "USBD" | "USBH" | CVGateOut | CVOut | GateOut;
 type InPorts = "NONE" | "ALLACTIVE" | "A" | "B" | "USBH" | "USBD" | "CVG";
-type DrumLanes = Array<string> | null;
+interface DrumLane {
+  number: number | ProgramChangeNumber;
+  name: string;
+  comment?: Comment | null;
+}
 type ProgramChangeNumber = string;
 type Comment = string;
 interface ProgramChange {
   number: number | ProgramChangeNumber;
   name: string;
-  comment: Comment | null;
+  comment?: Comment | null;
 }
 type ProgramChanges = Array<ProgramChange> | null;
 interface ControlChange {
   number: number;
   name: string;
-  comment: Comment | null;
+  comment?: Comment | null;
 }
 type ControlChanges = Array<ControlChange> | null;
+type DrumLanes = Array<DrumLane> | null;
+type ModType = "CC" | "PB" | "AT" | "CV" | "NPRN";
+
+type PotNumber = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
+interface Assignment {
+  potNumber: PotNumber;
+  type: ModType | null;
+  value: number;
+  comment?: Comment | null;
+}
+type Assignments = Array<Assignment> | null;
+interface Automation {
+  type: ModType;
+  value: number | string | null;
+  default: number | null;
+  comment?: Comment | null;
+}
+type Automations = Array<Automation> | null;
 
 export interface Config {
   VERSION: 1;
@@ -33,14 +55,30 @@ export interface Config {
   DRUMLANES: DrumLanes;
   PC: ProgramChanges;
   CC: ControlChanges;
-  COMMENT: Comment | null;
+  ASSIGN?: Assignments;
+  AUTOMATION?: Automations;
+  COMMENT?: Comment | null;
 }
 
-function* generateDrumlanes(drumlanes: DrumLanes): Generator<string> {
-  yield `[DRUMLANES]`;
+function* generateDrumLane(drumLane: DrumLane): Generator<string> {
+  yield `${drumLane.number} ${drumLane.name}`;
 
-  if (drumlanes == null) {
-    yield "\n";
+  if (drumLane.comment != null) {
+    yield ` #${drumLane.comment}`;
+  }
+}
+
+function* generateDrumlanes(drumLanes: DrumLanes): Generator<string> {
+  yield `[DRUMLANES]`;
+  yield `\n`;
+
+  if (drumLanes == null) {
+    yield `\n`;
+  } else {
+    for (const row of drumLanes) {
+      yield* generateDrumLane(row);
+      yield `\n`;
+    }
   }
 
   yield `[/DRUMLANES]`;
@@ -142,6 +180,74 @@ function* genComment(comment: Comment): Generator<string> {
   yield result.join("");
 }
 
+function* generateAssignment(assignment: Assignment): Generator<string> {
+  yield `${assignment.potNumber} ${assignment.type}:${assignment.value}`;
+
+  if (assignment.comment != null) {
+    yield ` # ${assignment.comment}`;
+  }
+}
+
+function* generateAssignments(assignments: Assignments): Generator<string> {
+  yield `[ASSIGN]`;
+  yield `\n`;
+
+  if (assignments == null) {
+    yield "\n";
+  } else {
+    for (const row of assignments) {
+      yield* generateAssignment(row);
+      yield `\n`;
+    }
+  }
+
+  yield `[/ASSIGN]`;
+}
+
+function* genAssignments(assignments: Assignments): Generator<string> {
+  const result = [];
+  for (const row of generateAssignments(assignments)) {
+    result.push(row);
+  }
+  yield result.join("");
+}
+
+function* generateAutomation(automation: Automation): Generator<string> {
+  yield `${automation.type}:${automation.value}`;
+
+  if (automation.default != null) {
+    yield ` DEFAULT=${automation.default}`;
+  }
+
+  if (automation.comment != null) {
+    yield ` # ${automation.comment}`;
+  }
+}
+
+function* generateAutomations(automations: Automations): Generator<string> {
+  yield `[AUTOMATION]`;
+  yield `\n`;
+
+  if (automations == null) {
+    yield "\n";
+  } else {
+    for (const row of automations) {
+      yield* generateAutomation(row);
+      yield `\n`;
+    }
+  }
+
+  yield `[/AUTOMATION]`;
+}
+
+function* genAutomations(automations: Automations): Generator<string> {
+  const result = [];
+  for (const row of generateAutomations(automations)) {
+    result.push(row);
+  }
+  yield result.join("");
+}
+
 export function* generateContent(config: Config): Generator<string> {
   yield `VERSION ${config.VERSION}`;
   yield `TRACKNAME ${config.TRACKNAME ?? "NULL"}`;
@@ -164,8 +270,14 @@ export function* generateContent(config: Config): Generator<string> {
   }
 
   // yield `[NRPN]\n[/NRPN]`;
-  // yield `[ASSIGN]\n[/ASSIGN]`;
-  // yield `[AUTOMATION]\n[/AUTOMATION]`;
+
+  if (config.ASSIGN != null) {
+    yield* genAssignments(config.ASSIGN);
+  }
+
+  if (config.AUTOMATION != null) {
+    yield* genAutomations(config.AUTOMATION);
+  }
 
   if (config.COMMENT != null) {
     yield* genComment(config.COMMENT);
