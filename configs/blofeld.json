@@ -1,0 +1,21 @@
+{
+  "VERSION": 1,
+  "TRACKNAME": "Blofeld",
+  "TYPE": "POLY",
+  "OUTPORT": null,
+  "OUTCHAN": null,
+  "INPORT": "NONE",
+  "INCHAN": "ALL",
+  "DRUMLANES": null,
+  "PC": [
+    {
+      "number": 1,
+      "name": "INIT"
+    },
+    {
+      "number": "1:1:NULL",
+      "name": "BANKB_PATCH2",
+      "comment": "for the blofeld, MSB sets the bank, PC sets the patch"
+    }
+  ]
+}

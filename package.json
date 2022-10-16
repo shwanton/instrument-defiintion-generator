@@ -12,7 +12,8 @@
     "fix": "eslint --fix --ext .js,.ts,.tsx .",
     "format": "yarn fix && yarn pretty",
     "test": "jest",
-    "pretty": "prettier --write 'src/**/*.ts'"
+    "pretty": "prettier --write 'src/**/*.ts'",
+    "start": "ts-node src/index.ts"
   },
   "devDependencies": {
     "@types/jest": "^29.1.2",
