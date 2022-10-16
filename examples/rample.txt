@@ -1,34 +1,17 @@
-############# DRUM Example 2 #############
-VERSION 1 # Currently, this should only be 1.
+VERSION 1
 
-###### DEFINITIONS
-
-# Supports all alphanumeric ASCII, and ' ', '_', '-', '+' - can also be NULL
 TRACKNAME Rample_DRUM
 
-# Can be POLY, DRUM, MPE, or NULL
 TYPE DRUM
 
-# Can be A, B, C, D, USBD, USBH, CVGx (x between 1&4), CVx, Gx, or NULL
 OUTPORT NULL
 
-# Can be x (between 1-16), or NULL -- this is ignored if output port is not MIDI
 OUTCHAN NULL
 
-# Can be NONE, ALLACTIVE, A, B, USBH, USBD, CVG, or NULL
 INPORT NONE
 
-# Can be x (between 1-16), ALL, or NULL. This definition will be ignored if INPORT is NONE, ALLACTIVE or CVG
 INCHAN NULL
 
-# DRUMLANES
-# Syntax: ROW:TRIG:CHAN:NOTENUMBER NAME
-# ROW must be between 1 and 8
-# TRIG can be between 0 and 127, or NULL
-# CHAN can be a number between 1 and 16, Gx, CVx, CVGx (x between 1 and 4), or NULL
-# NOTENUMBER can be between 0 and 127, or NULL
-# NAME supports all alphanumeric ASCII, and ' ', '_', '-', '+' - can also be NULL
-# Please note this section will be discarded for tracks which are not DRUM tracks
 [DRUMLANES]
 4:NULL:NULL:51 SP4
 3:NULL:NULL:50 SP3
@@ -36,28 +19,16 @@ INCHAN NULL
 1:NULL:NULL:48 SP1
 [/DRUMLANES]
 
-
-# PC
-# Syntax: NUMBER NAME
-# number must be either:
-#   - A number (for simple PC)
-#   - Three numbers, delimited by ':', which represent PC:MSB:LSB. You can put 'NULL' to not set the MSB/LSB.
-# PC must be between 1...128
-# MSB/LSB must be between 0...127
 [PC]
 1:1:NULL A2
 13:4:NULL M5
 [/PC]
 
-# CC
-# Syntax: CC_NUMBER NAME or CC_NUMBER:DEFAULT=xx NAME
-# DEFAULT_VALUE must be a valid number between 0 and 127
 [CC]
 0 Kit Select
 99 Bank Select
 100 Previous kit
 101 Next kit
-
 10 1pitch
 11 1bits
 12 1Filter
@@ -68,7 +39,6 @@ INCHAN NULL
 17 1Runmode
 18 1Level
 19 1layer
-
 20 2pitch
 21 2bits
 22 2Filter
@@ -79,7 +49,6 @@ INCHAN NULL
 27 2Runmode
 28 2Level
 29 2layer
-
 30 3pitch
 31 3bits
 32 3Filter
@@ -90,7 +59,6 @@ INCHAN NULL
 37 3Runmode
 38 3Level
 39 3layer
-
 40 4pitch
 41 4bits
 42 4Filter
@@ -101,7 +69,6 @@ INCHAN NULL
 47 4Runmode
 48 4Level
 49 4layer
-
 50 ALLpitch
 51 ALLbits
 52 ALLFilter
@@ -112,19 +79,16 @@ INCHAN NULL
 57 ALLRunmode
 58 ALLLevel
 59 ALLlayer
-
 60 ALL Layer
 61 1 Layer
 62 2 Layer
 63 3 Layer
 64 4 Layer
-
 70 ALL Rand
 71 1 Rand
 72 2 Rand
 73 3 Rand
 74 4 Rand
-
 80 ALL Reset
 81 1 Reset
 82 2 Reset
@@ -132,8 +96,6 @@ INCHAN NULL
 84 4 Reset
 [/CC]
 
-
-# This section will be readable from Hapax.
 [COMMENT]
 Rample in a drum track
 [/COMMENT]

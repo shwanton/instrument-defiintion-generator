@@ -2,35 +2,42 @@ import path from "path";
 import { createReadStream, writeFileSync } from "fs";
 import { createInterface } from "readline";
 
-async function* generateFileContent(): AsyncGenerator<string> {
+async function* genLines(): AsyncGenerator<string> {
   const filename = path.join(__dirname, "../", "input.txt");
   const fileStream = createReadStream(filename);
 
-  const rl = createInterface({
+  const readline = createInterface({
     input: fileStream,
     crlfDelay: Infinity,
   });
 
-  for await (const line of rl) {
+  for await (const line of readline) {
     yield line;
   }
 }
 
-const CC_REGEX = /(\d+)\s(.*)/;
-// const DRUMLANE_REGEX = /^(.*)\s([A-Z]+)/;
+// const DRUMLANE_REGEX = /^(.*)\s([A-Z\d]+)/;
+// const PC_REGEX = /^(.*)\s([A-Z\d]+)$/;
+const CC_REGEX = /(\d+)\s(.*)$/;
 // const NPRN_REGEX = /^(\d+):(\d+):(\d+)\s(.*)$/;
 
 (async () => {
-  const rows = [];
-  for await (const line of generateFileContent()) {
-    // console.log(line);
-
+  const lines = [];
+  for await (const line of genLines()) {
+    // const parts = line.match(DRUMLANE_REGEX);
+    // const parts = line.match(PC_REGEX);
     const parts = line.match(CC_REGEX);
     if (parts == null) {
       break;
     }
 
+    // DrumLane
+    // const row = { number: parts[1], name: parts[2] };
+    // PC
+    // const row = { number: parts[1], name: parts[2] };
+    // CC
     const row = { number: Number(parts[1]), name: parts[2] };
+    // NPRN
     // const row = {
     //   msb: Number(parts[1]),
     //   lsb: Number(parts[2]),
@@ -38,9 +45,9 @@ const CC_REGEX = /(\d+)\s(.*)/;
     //   name: parts[4],
     // };
     console.log(row);
-    rows.push(row);
+    lines.push(row);
   }
 
-  const json = JSON.stringify(rows);
+  const json = JSON.stringify(lines);
   writeFileSync("ouput.json", json);
 })();
