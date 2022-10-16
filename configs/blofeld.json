@@ -17,5 +17,475 @@
       "name": "BANKB_PATCH2",
       "comment": "for the blofeld, MSB sets the bank, PC sets the patch"
     }
+  ],
+  "CC": [
+    {
+      "number": 0,
+      "name": "BaSelMSB"
+    },
+    {
+      "number": 1,
+      "name": "ModWheel"
+    },
+    {
+      "number": 2,
+      "name": "Breath Ctrl"
+    },
+    {
+      "number": 4,
+      "name": "Foot Ctrl"
+    },
+    {
+      "number": 5,
+      "name": "GlideRate"
+    },
+    {
+      "number": 7,
+      "name": "ChVolume"
+    },
+    {
+      "number": 10,
+      "name": "Pan"
+    },
+    {
+      "number": 12,
+      "name": "ArpRange"
+    },
+    {
+      "number": 13,
+      "name": "ArpLength"
+    },
+    {
+      "number": 14,
+      "name": "ArpActive"
+    },
+    {
+      "number": 15,
+      "name": "LFO1Shape"
+    },
+    {
+      "number": 16,
+      "name": "LFO1Speed"
+    },
+    {
+      "number": 17,
+      "name": "LFO1Sync"
+    },
+    {
+      "number": 18,
+      "name": "LFO1Delay"
+    },
+    {
+      "number": 19,
+      "name": "LFO2Shape"
+    },
+    {
+      "number": 20,
+      "name": "LFO2Speed"
+    },
+    {
+      "number": 21,
+      "name": "LFO2Sync"
+    },
+    {
+      "number": 22,
+      "name": "LFO2Delay"
+    },
+    {
+      "number": 23,
+      "name": "LFO3Shape"
+    },
+    {
+      "number": 24,
+      "name": "LFO3Speed"
+    },
+    {
+      "number": 25,
+      "name": "LFO3Sync"
+    },
+    {
+      "number": 26,
+      "name": "LFO3Delay"
+    },
+    {
+      "number": 27,
+      "name": "Osc1Octave"
+    },
+    {
+      "number": 28,
+      "name": "Osc1Semitone"
+    },
+    {
+      "number": 29,
+      "name": "Osc1Detune"
+    },
+    {
+      "number": 30,
+      "name": "Osc1FM"
+    },
+    {
+      "number": 31,
+      "name": "Osc1Shape"
+    },
+    {
+      "number": 32,
+      "name": "BaSelLSB"
+    },
+    {
+      "number": 33,
+      "name": "Osc1PW"
+    },
+    {
+      "number": 34,
+      "name": "Osc1PWM"
+    },
+    {
+      "number": 35,
+      "name": "Osc2Octave"
+    },
+    {
+      "number": 36,
+      "name": "Osc2Semitone"
+    },
+    {
+      "number": 37,
+      "name": "Osc2Detune"
+    },
+    {
+      "number": 38,
+      "name": "Osc2FM"
+    },
+    {
+      "number": 39,
+      "name": "Osc2Shape"
+    },
+    {
+      "number": 40,
+      "name": "Osc2PW"
+    },
+    {
+      "number": 41,
+      "name": "Osc2PWM"
+    },
+    {
+      "number": 42,
+      "name": "Osc3Octave"
+    },
+    {
+      "number": 43,
+      "name": "Osc3Semitone"
+    },
+    {
+      "number": 44,
+      "name": "Osc3Detune"
+    },
+    {
+      "number": 45,
+      "name": "Osc3FM"
+    },
+    {
+      "number": 46,
+      "name": "Osc3Shape"
+    },
+    {
+      "number": 47,
+      "name": "Osc3PW"
+    },
+    {
+      "number": 48,
+      "name": "Osc3PWM"
+    },
+    {
+      "number": 49,
+      "name": "Sync"
+    },
+    {
+      "number": 50,
+      "name": "Pitchmod"
+    },
+    {
+      "number": 51,
+      "name": "Glide Mode"
+    },
+    {
+      "number": 52,
+      "name": "Osc1Level"
+    },
+    {
+      "number": 53,
+      "name": "Osc1Balance"
+    },
+    {
+      "number": 54,
+      "name": "RingLevel"
+    },
+    {
+      "number": 55,
+      "name": "RingBalance"
+    },
+    {
+      "number": 56,
+      "name": "Osc2Level"
+    },
+    {
+      "number": 57,
+      "name": "Osc2Balance"
+    },
+    {
+      "number": 58,
+      "name": "Osc3Level"
+    },
+    {
+      "number": 59,
+      "name": "Osc3Balance"
+    },
+    {
+      "number": 60,
+      "name": "NoiseLevel"
+    },
+    {
+      "number": 61,
+      "name": "NoiseBalance"
+    },
+    {
+      "number": 62,
+      "name": "NoiseColour"
+    },
+    {
+      "number": 64,
+      "name": "SustPedal"
+    },
+    {
+      "number": 65,
+      "name": "GlideActive"
+    },
+    {
+      "number": 66,
+      "name": "Sostenuto"
+    },
+    {
+      "number": 67,
+      "name": "Routing"
+    },
+    {
+      "number": 68,
+      "name": "F1Type"
+    },
+    {
+      "number": 69,
+      "name": "F1Cutoff"
+    },
+    {
+      "number": 70,
+      "name": "F1Resonance"
+    },
+    {
+      "number": 71,
+      "name": "F1Drive"
+    },
+    {
+      "number": 72,
+      "name": "F1Keytrack"
+    },
+    {
+      "number": 73,
+      "name": "F1EnvAmount"
+    },
+    {
+      "number": 74,
+      "name": "F1EnvVelocity"
+    },
+    {
+      "number": 75,
+      "name": "F1CutoffMod"
+    },
+    {
+      "number": 76,
+      "name": "F1FM"
+    },
+    {
+      "number": 77,
+      "name": "F1Pan"
+    },
+    {
+      "number": 78,
+      "name": "F1Panmod"
+    },
+    {
+      "number": 79,
+      "name": "F2Type"
+    },
+    {
+      "number": 80,
+      "name": "F2Cutoff"
+    },
+    {
+      "number": 81,
+      "name": "F2Resonance"
+    },
+    {
+      "number": 82,
+      "name": "F2Drive"
+    },
+    {
+      "number": 83,
+      "name": "F2Keytrack"
+    },
+    {
+      "number": 84,
+      "name": "F2EnvAmount"
+    },
+    {
+      "number": 85,
+      "name": "F2EnvVelocity"
+    },
+    {
+      "number": 86,
+      "name": "F2CutoffMod"
+    },
+    {
+      "number": 87,
+      "name": "F2FM"
+    },
+    {
+      "number": 88,
+      "name": "F2Pan"
+    },
+    {
+      "number": 89,
+      "name": "F2Panmod"
+    },
+    {
+      "number": 90,
+      "name": "AmpVolume"
+    },
+    {
+      "number": 91,
+      "name": "AmpVelocity"
+    },
+    {
+      "number": 92,
+      "name": "AmpMod"
+    },
+    {
+      "number": 93,
+      "name": "FX1Mix"
+    },
+    {
+      "number": 94,
+      "name": "FX2Mix"
+    },
+    {
+      "number": 95,
+      "name": "FEAttack"
+    },
+    {
+      "number": 96,
+      "name": "FEDec"
+    },
+    {
+      "number": 97,
+      "name": "FESust"
+    },
+    {
+      "number": 98,
+      "name": "FEDec2"
+    },
+    {
+      "number": 99,
+      "name": "FESust2"
+    },
+    {
+      "number": 100,
+      "name": "FERelease"
+    },
+    {
+      "number": 101,
+      "name": "AEAttack"
+    },
+    {
+      "number": 102,
+      "name": "AEDec"
+    },
+    {
+      "number": 103,
+      "name": "AESust"
+    },
+    {
+      "number": 104,
+      "name": "AEDec2"
+    },
+    {
+      "number": 105,
+      "name": "AESust2"
+    },
+    {
+      "number": 106,
+      "name": "AERelease"
+    },
+    {
+      "number": 107,
+      "name": "E3Attack"
+    },
+    {
+      "number": 108,
+      "name": "E3Dec"
+    },
+    {
+      "number": 109,
+      "name": "E3Sust"
+    },
+    {
+      "number": 110,
+      "name": "E3Dec2"
+    },
+    {
+      "number": 111,
+      "name": "E3Sust2"
+    },
+    {
+      "number": 112,
+      "name": "E3Release"
+    },
+    {
+      "number": 113,
+      "name": "E4Attack"
+    },
+    {
+      "number": 114,
+      "name": "E4Dec"
+    },
+    {
+      "number": 115,
+      "name": "E4Sust"
+    },
+    {
+      "number": 116,
+      "name": "E4Dec2"
+    },
+    {
+      "number": 117,
+      "name": "E4Sust2"
+    },
+    {
+      "number": 118,
+      "name": "E4Release"
+    },
+    {
+      "number": 120,
+      "name": "SoundsOff"
+    },
+    {
+      "number": 121,
+      "name": "ResetControllers"
+    },
+    {
+      "number": 122,
+      "name": "LocalControl"
+    },
+    {
+      "number": 123,
+      "name": "NotesOff"
+    }
   ]
 }

@@ -14,6 +14,12 @@ interface ProgramChange {
   comment: string | null;
 }
 type ProgramChanges = Array<ProgramChange> | null;
+interface ControlChange {
+  number: number;
+  name: string;
+  comment: string | null;
+}
+type ControlChanges = Array<ControlChange> | null;
 
 export interface Config {
   VERSION: 1;
@@ -25,6 +31,7 @@ export interface Config {
   INCHAN: MIDIChannels | "ALL" | null;
   DRUMLANES: DrumLanes;
   PC: ProgramChanges;
+  CC: ControlChanges;
 }
 
 function* generateDrumlanes(drumlanes: DrumLanes): Generator<string> {
@@ -81,6 +88,42 @@ function* genProgramChanges(programChanges: ProgramChanges): Generator<string> {
   yield result.join("");
 }
 
+function* generateControlChange(
+  controlChange: ControlChange
+): Generator<string> {
+  yield `${controlChange.number} ${controlChange.name}`;
+
+  if (controlChange.comment != null) {
+    yield ` #${controlChange.comment}`;
+  }
+}
+
+function* generateControlChanges(
+  controlChanges: ControlChanges
+): Generator<string> {
+  yield `[CC]`;
+  yield `\n`;
+
+  if (controlChanges == null) {
+    yield "\n";
+  } else {
+    for (const row of controlChanges) {
+      yield* generateControlChange(row);
+      yield `\n`;
+    }
+  }
+
+  yield `[/CC]`;
+}
+
+function* genControlChanges(controlChanges: ControlChanges): Generator<string> {
+  const result = [];
+  for (const row of generateControlChanges(controlChanges)) {
+    result.push(row);
+  }
+  yield result.join("");
+}
+
 export function* generateContent(config: Config): Generator<string> {
   yield `VERSION ${config.VERSION}`;
   yield `TRACKNAME ${config.TRACKNAME ?? "NULL"}`;
@@ -97,7 +140,11 @@ export function* generateContent(config: Config): Generator<string> {
   if (config.PC != null) {
     yield* genProgramChanges(config.PC);
   }
-  yield `[CC]\n[/CC]`;
+
+  if (config.CC != null) {
+    yield* genControlChanges(config.CC);
+  }
+
   yield `[NRPN]\n[/NRPN]`;
   yield `[ASSIGN]\n[/ASSIGN]`;
   yield `[AUTOMATION]\n[/AUTOMATION]`;

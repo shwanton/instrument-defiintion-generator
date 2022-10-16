@@ -1,6 +1,7 @@
 import path from "path";
-import type { Config } from "../generator";
 import { readFileSync } from "fs";
+
+import type { Config } from "../generator";
 import { genDefinitions } from "../generator";
 
 it.skip("should create empty definitions from empty config json", () => {
