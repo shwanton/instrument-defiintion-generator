@@ -38,7 +38,26 @@ it("should create norddrum3 definitions from config json", () => {
   const filename = path.join(__dirname, "../../examples", "norddrum3p.txt");
   const content = readFileSync(filename, "utf8");
 
-  const json_filename = path.join(__dirname, "../../configs", "norddrum3.json");
+  const json_filename = path.join(
+    __dirname,
+    "../../configs",
+    "nord_drum_3.json"
+  );
+  const json = readFileSync(json_filename, "utf8");
+
+  const config = JSON.parse(json) as Config;
+  expect(genDefinitions(config)).toEqual(content);
+});
+
+it("should create circuit_tracks definitions from config json", () => {
+  const filename = path.join(__dirname, "../../examples", "circuit_tracks.txt");
+  const content = readFileSync(filename, "utf8");
+
+  const json_filename = path.join(
+    __dirname,
+    "../../configs",
+    "circuit_tracks.json"
+  );
   const json = readFileSync(json_filename, "utf8");
 
   const config = JSON.parse(json) as Config;

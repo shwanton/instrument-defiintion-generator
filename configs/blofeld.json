@@ -488,5 +488,6 @@
       "name": "NotesOff"
     }
   ],
+  "NPRN": null,
   "COMMENT": "Blofeld can be in multimode, chan 1...16 control their respective sound"
 }

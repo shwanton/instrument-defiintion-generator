@@ -43,6 +43,15 @@ interface Automation {
   comment?: Comment | null;
 }
 type Automations = Array<Automation> | null;
+interface NPRN {
+  msb: number;
+  lsb: number;
+  depth: 7 | 14;
+  name: string;
+  default: number | null;
+  comment?: Comment | null;
+}
+type NPRNs = Array<NPRN> | null;
 
 export interface Config {
   VERSION: 1;
@@ -57,6 +66,7 @@ export interface Config {
   CC: ControlChanges;
   ASSIGN?: Assignments;
   AUTOMATION?: Automations;
+  NPRN: NPRNs;
   COMMENT?: Comment | null;
 }
 
@@ -248,6 +258,42 @@ function* genAutomations(automations: Automations): Generator<string> {
   yield result.join("");
 }
 
+function* generateNPRN(nprn: NPRN): Generator<string> {
+  yield `${nprn.msb}:${nprn.lsb}:${nprn.depth} ${nprn.name}`;
+
+  if (nprn.default != null) {
+    yield ` DEFAULT_VALUE=${nprn.default}`;
+  }
+
+  if (nprn.comment != null) {
+    yield ` # ${nprn.comment}`;
+  }
+}
+
+function* generateNPRNs(nprns: NPRNs): Generator<string> {
+  yield `[NRPN]`;
+  yield `\n`;
+
+  if (nprns == null) {
+    yield "\n";
+  } else {
+    for (const row of nprns) {
+      yield* generateNPRN(row);
+      yield `\n`;
+    }
+  }
+
+  yield `[/NRPN]`;
+}
+
+function* genNPRNs(nprns: NPRNs): Generator<string> {
+  const result = [];
+  for (const row of generateNPRNs(nprns)) {
+    result.push(row);
+  }
+  yield result.join("");
+}
+
 export function* generateContent(config: Config): Generator<string> {
   yield `VERSION ${config.VERSION}`;
   yield `TRACKNAME ${config.TRACKNAME ?? "NULL"}`;
@@ -269,7 +315,9 @@ export function* generateContent(config: Config): Generator<string> {
     yield* genControlChanges(config.CC);
   }
 
-  // yield `[NRPN]\n[/NRPN]`;
+  if (config.NPRN != null) {
+    yield* genNPRNs(config.NPRN);
+  }
 
   if (config.ASSIGN != null) {
     yield* genAssignments(config.ASSIGN);

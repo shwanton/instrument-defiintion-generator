@@ -1,40 +1,17 @@
-############# POLY Example 1 #############
-VERSION 1 # Currently, this should only be 1.
+VERSION 1
 
-###### DEFINITIONS
-
-# Names support all alphanumeric ASCII, and ' ', '_', '-', '+'
-# Can also be omitted or NULL to not override the current track name, e.g. "TRACKNAME NULL"
 TRACKNAME CircuitT_Synth1
 
-# Can be POLY, DRUM, MPE, or NULL
 TYPE POLY
 
-# Can be A, B, C, D, USBD, USBH, CVGx (x between 1&4), CVx, Gx, or NULL
 OUTPORT NULL
 
-# Can be x (between 1-16), or NULL -- this is ignored if output port is not MIDI
 OUTCHAN 1
 
-# Can be NONE, ALLACTIVE, A, B, USBH, USBD, CVG, or NULL
 INPORT ALLACTIVE
 
-# Can be x (between 1-16), ALL, or NULL -- ignored if INPORT is NONE, ALLACTIVE or CVG
 INCHAN ALL
 
-# PC
-# Syntax: NUMBER NAME
-# number must be either:
-#   - A number (for simple PC)
-#   - Three numbers, delimited by ':', which represent PC:MSB:LSB. You can put 'NULL' to not set the MSB/LSB.
-# PC must be between 1...128
-# MSB/LSB must be between 0...127
-[PC]
-[/PC]
-
-# CC
-# Syntax: CC_NUMBER NAME or CC_NUMBER:DEFAULT=xx NAME
-# DEFAULT_VALUE must be a valid number between 0 and 127
 [CC]
 19 Osc1 wave
 20 Osc1 wave interp
@@ -45,7 +22,6 @@ INCHAN ALL
 26 Osc1 Semitones
 27 Osc1 Cents
 28 Osc1 Pitchbend
-
 29 Osc2 wave
 30 Osc2 wave interp
 31 Osc2 PW
@@ -55,14 +31,12 @@ INCHAN ALL
 37 Osc2 Semitones
 39 Osc2 Cents
 40 Osc2 Pitchbend
-
 51 Osc1 Level
 52 Osc2 Level
 54 Ringmod Level
 56 Noise level
 58 prefx level
 59 postfx level
-
 60 filter routing
 63 filter drive
 63 filter drive type
@@ -72,16 +46,13 @@ INCHAN ALL
 71 filter resonance
 78 filter q normalize
 79 filter env2 to frequency
-
 108 env1 velocity
 73 env1 attack
 75 env1 decay
 70 env1 sustain
 72 env1 release
-
 91 Distortion level
 93 chorus level
-
 80 macro1
 81 macro2
 82 macro3
@@ -92,11 +63,6 @@ INCHAN ALL
 87 macro8
 [/CC]
 
-# NRPN
-# Syntax: "MSB:LSB:DEPTH NAME" or "MSB:LSB:DEPTH:DEFAULT=xx NAME"
-# Lsb & msb should be between 0 and 127
-# DEPTH can be 7 or 14
-# For NRPN: DEFAULT_VALUE must be a valid number, either between 0 and 127 (for 7 bit NRPNs) or between 0 and 16383 (for 14bit NRPNs)
 [NRPN]
 0:0:7 Env2 velocity
 0:1:7 Env2 Attack
@@ -105,8 +71,6 @@ INCHAN ALL
 0:4:7 Env2 Release
 [/NRPN]
 
-
-# This section will be readable from Hapax.
 [COMMENT]
 Not exhaustive, a lot is there already.
 All info from the Circuit Programmers Reference Guide.

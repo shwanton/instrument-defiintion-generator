@@ -188,6 +188,7 @@
       "name": "Channel Select"
     }
   ],
+  "NPRN": null,
   "ASSIGN": [
     {
       "potNumber": 1,
