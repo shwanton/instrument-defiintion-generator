@@ -8,16 +8,17 @@ type OutPorts = "A" | "B" | "C" | "D" | "USBD" | "USBH" | CVGateOut | CVOut | Ga
 type InPorts = "NONE" | "ALLACTIVE" | "A" | "B" | "USBH" | "USBD" | "CVG";
 type DrumLanes = Array<string> | null;
 type ProgramChangeNumber = string;
+type Comment = string;
 interface ProgramChange {
   number: number | ProgramChangeNumber;
   name: string;
-  comment: string | null;
+  comment: Comment | null;
 }
 type ProgramChanges = Array<ProgramChange> | null;
 interface ControlChange {
   number: number;
   name: string;
-  comment: string | null;
+  comment: Comment | null;
 }
 type ControlChanges = Array<ControlChange> | null;
 
@@ -32,6 +33,7 @@ export interface Config {
   DRUMLANES: DrumLanes;
   PC: ProgramChanges;
   CC: ControlChanges;
+  COMMENT: Comment | null;
 }
 
 function* generateDrumlanes(drumlanes: DrumLanes): Generator<string> {
@@ -124,6 +126,22 @@ function* genControlChanges(controlChanges: ControlChanges): Generator<string> {
   yield result.join("");
 }
 
+function* generateComment(comment: Comment): Generator<string> {
+  yield `[COMMENT]`;
+  yield `\n`;
+  yield comment;
+  yield `\n`;
+  yield `[/COMMENT]`;
+}
+
+function* genComment(comment: Comment): Generator<string> {
+  const result = [];
+  for (const row of generateComment(comment)) {
+    result.push(row);
+  }
+  yield result.join("");
+}
+
 export function* generateContent(config: Config): Generator<string> {
   yield `VERSION ${config.VERSION}`;
   yield `TRACKNAME ${config.TRACKNAME ?? "NULL"}`;
@@ -145,19 +163,22 @@ export function* generateContent(config: Config): Generator<string> {
     yield* genControlChanges(config.CC);
   }
 
-  yield `[NRPN]\n[/NRPN]`;
-  yield `[ASSIGN]\n[/ASSIGN]`;
-  yield `[AUTOMATION]\n[/AUTOMATION]`;
-  yield `[COMMENT]\n[/COMMENT]`;
+  // yield `[NRPN]\n[/NRPN]`;
+  // yield `[ASSIGN]\n[/ASSIGN]`;
+  // yield `[AUTOMATION]\n[/AUTOMATION]`;
+
+  if (config.COMMENT != null) {
+    yield* genComment(config.COMMENT);
+  }
 }
 
 export function genDefinitionString(config: Config): string {
   const result = [];
-  for (const message of generateContent(config)) {
-    result.push(message);
+  for (const row of generateContent(config)) {
+    result.push(row);
   }
 
-  return result.join("\n\n");
+  return result.join(`\n\n`) + `\n`;
 }
 
 export function genDefinitions(config: Config): string {

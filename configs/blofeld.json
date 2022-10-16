@@ -487,5 +487,6 @@
       "number": 123,
       "name": "NotesOff"
     }
-  ]
+  ],
+  "COMMENT": "Blofeld can be in multimode, chan 1...16 control their respective sound"
 }
