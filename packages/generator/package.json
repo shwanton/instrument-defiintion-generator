@@ -1,6 +1,6 @@
 {
   "name": "generator",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "main": "dist/index.js",
   "author": "Shawn Dempsey <shwanton@gmail.com>",
   "license": "CC-BY-4.0",

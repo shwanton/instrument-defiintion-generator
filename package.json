@@ -11,6 +11,11 @@
   "scripts": {
     "generate": "yarn workspace generator start",
     "test": "yarn workspace generator test",
-    "parse": "yarn workspace generator parse"
+    "parse": "yarn workspace generator parse",
+    "www:start": "yarn workspace www start",
+    "www:test": "yarn workspace www test"
+  },
+  "engines": {
+    "node": "^14.15.0 || ^16.10.0 || >=18.0.0"
   }
 }
