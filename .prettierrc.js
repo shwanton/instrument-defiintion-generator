@@ -1,6 +1,5 @@
 module.exports = {
   bracketSpacing: true,
-  parser: "typescript",
   semi: true,
   singleQuote: false,
   trailingComma: "es5",

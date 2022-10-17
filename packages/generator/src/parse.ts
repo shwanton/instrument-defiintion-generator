@@ -2,8 +2,10 @@ import path from "path";
 import { createReadStream, writeFileSync } from "fs";
 import { createInterface } from "readline";
 
+const PWD = path.join(__dirname, "../../..");
+
 async function* genLines(): AsyncGenerator<string> {
-  const filename = path.join(__dirname, "../tmp", "input.txt");
+  const filename = path.join(PWD, "tmp", "input.txt");
   const fileStream = createReadStream(filename);
 
   const readline = createInterface({
@@ -49,5 +51,6 @@ const CC_REGEX = /(\d+)\s(.*)$/;
   }
 
   const json = JSON.stringify(lines);
-  writeFileSync("../tmp/output.json", json);
+  const filename = path.join(PWD, "tmp", "output.json");
+  writeFileSync(filename, json);
 })();
