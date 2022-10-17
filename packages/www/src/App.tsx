@@ -1,24 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { type Config, genDefinitionText } from "@packages/generator";
+import { useRef, useState } from "react";
+import config from "./rample.json";
 
 function App() {
+  const [downloadUrl, setDownloadUrl] = useState("");
+  const downloadAnchorRef = useRef<HTMLAnchorElement>(null);
+  const download = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+
+    const text = genDefinitionText(config as Config);
+    const blob = new Blob([text], { type: "text/plain" });
+    const fileDownloadUrl = URL.createObjectURL(blob);
+    setDownloadUrl(fileDownloadUrl);
+    downloadAnchorRef.current?.click();
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <p>Choose definition file to download</p>
       </header>
+      <main>
+        <select></select>
+        <button onClick={download}>Download the file!</button>
+        <a
+          style={{ visibility: "hidden" }}
+          download="foo.txt"
+          href={downloadUrl}
+          ref={downloadAnchorRef}
+        />
+      </main>
     </div>
   );
 }

@@ -1,0 +1,317 @@
+{
+  "VERSION": 1,
+  "TRACKNAME": "Rample_DRUM",
+  "TYPE": "DRUM",
+  "OUTPORT": null,
+  "OUTCHAN": null,
+  "INPORT": "NONE",
+  "INCHAN": null,
+  "DRUMLANES": [
+    {
+      "number": "4:NULL:NULL:51",
+      "name": "SP4"
+    },
+    {
+      "number": "3:NULL:NULL:50",
+      "name": "SP3"
+    },
+    {
+      "number": "2:NULL:NULL:49",
+      "name": "SP2"
+    },
+    {
+      "number": "1:NULL:NULL:48",
+      "name": "SP1"
+    }
+  ],
+  "PC": [
+    {
+      "number": "1:1:NULL",
+      "name": "A2"
+    },
+    {
+      "number": "13:4:NULL",
+      "name": "M5"
+    }
+  ],
+  "CC": [
+    {
+      "number": 0,
+      "name": "Kit Select"
+    },
+    {
+      "number": 99,
+      "name": "Bank Select"
+    },
+    {
+      "number": 100,
+      "name": "Previous kit"
+    },
+    {
+      "number": 101,
+      "name": "Next kit"
+    },
+    {
+      "number": 10,
+      "name": "1pitch"
+    },
+    {
+      "number": 11,
+      "name": "1bits"
+    },
+    {
+      "number": 12,
+      "name": "1Filter"
+    },
+    {
+      "number": 13,
+      "name": "1Freeze"
+    },
+    {
+      "number": 14,
+      "name": "1Start"
+    },
+    {
+      "number": 15,
+      "name": "1Length"
+    },
+    {
+      "number": 16,
+      "name": "1envelope"
+    },
+    {
+      "number": 17,
+      "name": "1Runmode"
+    },
+    {
+      "number": 18,
+      "name": "1Level"
+    },
+    {
+      "number": 19,
+      "name": "1layer"
+    },
+    {
+      "number": 20,
+      "name": "2pitch"
+    },
+    {
+      "number": 21,
+      "name": "2bits"
+    },
+    {
+      "number": 22,
+      "name": "2Filter"
+    },
+    {
+      "number": 23,
+      "name": "2Freeze"
+    },
+    {
+      "number": 24,
+      "name": "2Start"
+    },
+    {
+      "number": 25,
+      "name": "2Length"
+    },
+    {
+      "number": 26,
+      "name": "2envelope"
+    },
+    {
+      "number": 27,
+      "name": "2Runmode"
+    },
+    {
+      "number": 28,
+      "name": "2Level"
+    },
+    {
+      "number": 29,
+      "name": "2layer"
+    },
+    {
+      "number": 30,
+      "name": "3pitch"
+    },
+    {
+      "number": 31,
+      "name": "3bits"
+    },
+    {
+      "number": 32,
+      "name": "3Filter"
+    },
+    {
+      "number": 33,
+      "name": "3Freeze"
+    },
+    {
+      "number": 34,
+      "name": "3Start"
+    },
+    {
+      "number": 35,
+      "name": "3Length"
+    },
+    {
+      "number": 36,
+      "name": "3envelope"
+    },
+    {
+      "number": 37,
+      "name": "3Runmode"
+    },
+    {
+      "number": 38,
+      "name": "3Level"
+    },
+    {
+      "number": 39,
+      "name": "3layer"
+    },
+    {
+      "number": 40,
+      "name": "4pitch"
+    },
+    {
+      "number": 41,
+      "name": "4bits"
+    },
+    {
+      "number": 42,
+      "name": "4Filter"
+    },
+    {
+      "number": 43,
+      "name": "4Freeze"
+    },
+    {
+      "number": 44,
+      "name": "4Start"
+    },
+    {
+      "number": 45,
+      "name": "4Length"
+    },
+    {
+      "number": 46,
+      "name": "4envelope"
+    },
+    {
+      "number": 47,
+      "name": "4Runmode"
+    },
+    {
+      "number": 48,
+      "name": "4Level"
+    },
+    {
+      "number": 49,
+      "name": "4layer"
+    },
+    {
+      "number": 50,
+      "name": "ALLpitch"
+    },
+    {
+      "number": 51,
+      "name": "ALLbits"
+    },
+    {
+      "number": 52,
+      "name": "ALLFilter"
+    },
+    {
+      "number": 53,
+      "name": "ALLFreeze"
+    },
+    {
+      "number": 54,
+      "name": "ALLStart"
+    },
+    {
+      "number": 55,
+      "name": "ALLLength"
+    },
+    {
+      "number": 56,
+      "name": "ALLenvelope"
+    },
+    {
+      "number": 57,
+      "name": "ALLRunmode"
+    },
+    {
+      "number": 58,
+      "name": "ALLLevel"
+    },
+    {
+      "number": 59,
+      "name": "ALLlayer"
+    },
+    {
+      "number": 60,
+      "name": "ALL Layer"
+    },
+    {
+      "number": 61,
+      "name": "1 Layer"
+    },
+    {
+      "number": 62,
+      "name": "2 Layer"
+    },
+    {
+      "number": 63,
+      "name": "3 Layer"
+    },
+    {
+      "number": 64,
+      "name": "4 Layer"
+    },
+    {
+      "number": 70,
+      "name": "ALL Rand"
+    },
+    {
+      "number": 71,
+      "name": "1 Rand"
+    },
+    {
+      "number": 72,
+      "name": "2 Rand"
+    },
+    {
+      "number": 73,
+      "name": "3 Rand"
+    },
+    {
+      "number": 74,
+      "name": "4 Rand"
+    },
+    {
+      "number": 80,
+      "name": "ALL Reset"
+    },
+    {
+      "number": 81,
+      "name": "1 Reset"
+    },
+    {
+      "number": 82,
+      "name": "2 Reset"
+    },
+    {
+      "number": 83,
+      "name": "3 Reset"
+    },
+    {
+      "number": 84,
+      "name": "4 Reset"
+    }
+  ],
+  "NPRN": null,
+  "COMMENT": "Rample in a drum track"
+}

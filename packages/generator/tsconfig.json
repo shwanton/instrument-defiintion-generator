@@ -1,3 +1,11 @@
 {
-  "extends": "../../tsconfig.json"
+  "extends": "../../tsconfig.packages.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist",
+    "module": "CommonJS",
+    "baseUrl": "./src",
+    "noEmit": false
+  },
+  "include": ["src", "root/configs/**/*.json"]
 }
