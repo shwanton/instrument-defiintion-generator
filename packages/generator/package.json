@@ -12,8 +12,7 @@
     "test": "jest",
     "pretty": "prettier --write 'src/**/*.ts'",
     "parse": "ts-node src/parse.ts",
-    "start": "ts-node src/index.ts",
-    "compile": "tsc --build --force tsconfig.json"
+    "generate": "ts-node src/generate.ts"
   },
   "devDependencies": {
     "@types/jest": "^29.1.2",
