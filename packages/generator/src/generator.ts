@@ -53,8 +53,15 @@ interface NPRN {
   comment?: MaybeComment;
 }
 type NPRNs = Array<NPRN> | null;
+type GeneratorFn<T> = (data: T) => Generator<string>;
 type MaybeStringGenerator = Generator<string | null>;
 
+// Add hardware
+// Add version
+// Add unique id
+// Add username?
+// Zod?
+// JSON schema?
 export interface Config {
   VERSION: 1;
   TRACKNAME: string | null;
@@ -72,6 +79,11 @@ export interface Config {
   COMMENT: MaybeComment;
 }
 
+export interface State {
+  showEmptySections: boolean;
+  filename?: string;
+}
+
 function* genDrumLane(drumLane: DrumLane): Generator<string> {
   yield `${drumLane.number} ${drumLane.name}`;
 
@@ -85,7 +97,7 @@ function* genDrumlanes(drumLanes: DrumLanes): Generator<string> {
   yield `\n`;
 
   if (drumLanes == null) {
-    yield `\n`;
+    yield ``;
   } else {
     for (const row of drumLanes) {
       yield* genDrumLane(row);
@@ -109,7 +121,7 @@ function* genProgramChanges(programChanges: ProgramChanges): Generator<string> {
   yield `\n`;
 
   if (programChanges == null) {
-    yield "\n";
+    yield ``;
   } else {
     for (const pc of programChanges) {
       yield* genProgramChange(pc);
@@ -133,7 +145,7 @@ function* genControlChanges(controlChanges: ControlChanges): Generator<string> {
   yield `\n`;
 
   if (controlChanges == null) {
-    yield "\n";
+    yield ``;
   } else {
     for (const row of controlChanges) {
       yield* genControlChange(row);
@@ -157,7 +169,7 @@ function* genAssignments(assignments: Assignments): Generator<string> {
   yield `\n`;
 
   if (assignments == null) {
-    yield "\n";
+    yield ``;
   } else {
     for (const row of assignments) {
       yield* genAssignment(row);
@@ -185,7 +197,7 @@ function* genAutomations(automations: Automations): Generator<string> {
   yield `\n`;
 
   if (automations == null) {
-    yield "\n";
+    yield ``;
   } else {
     for (const row of automations) {
       yield* genAutomation(row);
@@ -213,7 +225,7 @@ function* genNPRNs(nprns: NPRNs): Generator<string> {
   yield `\n`;
 
   if (nprns == null) {
-    yield "\n";
+    yield ``;
   } else {
     for (const row of nprns) {
       yield* genNPRN(row);
@@ -229,28 +241,37 @@ function* genComment(comment: Comment | null): Generator<string> {
   yield `\n`;
   if (comment !== null) {
     yield comment;
+    yield `\n`;
   }
-  yield `\n`;
   yield `[/COMMENT]`;
 }
 
-function* genRows<T>(
-  rows: T,
-  generatorFn: (data: T) => Generator<string>
-): MaybeStringGenerator {
-  if (rows == null) {
-    return yield null;
-  }
+function genRowsWithState(
+  state: State
+): <T>(rows: T, generatorFn: GeneratorFn<T>) => MaybeStringGenerator {
+  const { showEmptySections } = state;
 
-  const result = [];
-  for (const row of generatorFn(rows)) {
-    result.push(row);
-  }
+  return function* <T>(
+    rows: T,
+    generatorFn: GeneratorFn<T>
+  ): MaybeStringGenerator {
+    if (showEmptySections === false && rows == null) {
+      return yield null;
+    }
 
-  yield result.join("");
+    const result = [];
+    for (const row of generatorFn(rows)) {
+      result.push(row);
+    }
+
+    yield result.join(``);
+  };
 }
 
-export function* genTextRows(config: Config): Generator<string | null> {
+export function* genTextRows(
+  config: Config,
+  state: State
+): Generator<string | null> {
   yield `VERSION ${config.VERSION}`;
   yield `TRACKNAME ${config.TRACKNAME ?? "NULL"}`;
   yield `TYPE ${config.TYPE ?? "NULL"}`;
@@ -258,6 +279,9 @@ export function* genTextRows(config: Config): Generator<string | null> {
   yield `OUTCHAN ${config.OUTCHAN ?? "NULL"}`;
   yield `INPORT ${config.INPORT ?? "NULL"}`;
   yield `INCHAN ${config.INCHAN ?? "NULL"}`;
+
+  const genRows = genRowsWithState(state);
+
   yield* genRows<DrumLanes>(config.DRUMLANES, genDrumlanes);
   yield* genRows<ProgramChanges>(config.PC, genProgramChanges);
   yield* genRows<ControlChanges>(config.CC, genControlChanges);
@@ -267,9 +291,9 @@ export function* genTextRows(config: Config): Generator<string | null> {
   yield* genRows<MaybeComment>(config.COMMENT, genComment);
 }
 
-export function genDefinitionText(config: Config): string {
+export function genDefinitionText(config: Config, state: State): string {
   const result = [];
-  for (const row of genTextRows(config)) {
+  for (const row of genTextRows(config, state)) {
     row != null && result.push(row);
   }
 

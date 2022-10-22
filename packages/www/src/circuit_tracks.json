@@ -1,0 +1,238 @@
+{
+  "VERSION": 1,
+  "TRACKNAME": "CircuitT_Synth1",
+  "TYPE": "POLY",
+  "OUTPORT": null,
+  "OUTCHAN": 1,
+  "INPORT": "ALLACTIVE",
+  "INCHAN": "ALL",
+  "DRUMLANES": null,
+  "PC": null,
+  "CC": [
+    {
+      "number": 19,
+      "name": "Osc1 wave"
+    },
+    {
+      "number": 20,
+      "name": "Osc1 wave interp"
+    },
+    {
+      "number": 21,
+      "name": "Osc1 PW"
+    },
+    {
+      "number": 22,
+      "name": "Osc1 Vsync"
+    },
+    {
+      "number": 24,
+      "name": "Osc1 Density"
+    },
+    {
+      "number": 25,
+      "name": "Osc1 Den. Detune"
+    },
+    {
+      "number": 26,
+      "name": "Osc1 Semitones"
+    },
+    {
+      "number": 27,
+      "name": "Osc1 Cents"
+    },
+    {
+      "number": 28,
+      "name": "Osc1 Pitchbend"
+    },
+    {
+      "number": 29,
+      "name": "Osc2 wave"
+    },
+    {
+      "number": 30,
+      "name": "Osc2 wave interp"
+    },
+    {
+      "number": 31,
+      "name": "Osc2 PW"
+    },
+    {
+      "number": 33,
+      "name": "Osc2 Vsync"
+    },
+    {
+      "number": 35,
+      "name": "Osc2 Density"
+    },
+    {
+      "number": 36,
+      "name": "Osc2 Den. Detune"
+    },
+    {
+      "number": 37,
+      "name": "Osc2 Semitones"
+    },
+    {
+      "number": 39,
+      "name": "Osc2 Cents"
+    },
+    {
+      "number": 40,
+      "name": "Osc2 Pitchbend"
+    },
+    {
+      "number": 51,
+      "name": "Osc1 Level"
+    },
+    {
+      "number": 52,
+      "name": "Osc2 Level"
+    },
+    {
+      "number": 54,
+      "name": "Ringmod Level"
+    },
+    {
+      "number": 56,
+      "name": "Noise level"
+    },
+    {
+      "number": 58,
+      "name": "prefx level"
+    },
+    {
+      "number": 59,
+      "name": "postfx level"
+    },
+    {
+      "number": 60,
+      "name": "filter routing"
+    },
+    {
+      "number": 63,
+      "name": "filter drive"
+    },
+    {
+      "number": 63,
+      "name": "filter drive type"
+    },
+    {
+      "number": 68,
+      "name": "filter type"
+    },
+    {
+      "number": 74,
+      "name": "filter frequency"
+    },
+    {
+      "number": 69,
+      "name": "filter tracking"
+    },
+    {
+      "number": 71,
+      "name": "filter resonance"
+    },
+    {
+      "number": 78,
+      "name": "filter q normalize"
+    },
+    {
+      "number": 79,
+      "name": "filter env2 to frequency"
+    },
+    {
+      "number": 108,
+      "name": "env1 velocity"
+    },
+    {
+      "number": 73,
+      "name": "env1 attack"
+    },
+    {
+      "number": 75,
+      "name": "env1 decay"
+    },
+    {
+      "number": 70,
+      "name": "env1 sustain"
+    },
+    {
+      "number": 72,
+      "name": "env1 release"
+    },
+    {
+      "number": 91,
+      "name": "Distortion level"
+    },
+    {
+      "number": 93,
+      "name": "chorus level"
+    },
+    {
+      "number": 80,
+      "name": "macro1"
+    },
+    {
+      "number": 81,
+      "name": "macro2"
+    },
+    {
+      "number": 82,
+      "name": "macro3"
+    },
+    {
+      "number": 83,
+      "name": "macro4"
+    },
+    {
+      "number": 84,
+      "name": "macro5"
+    },
+    {
+      "number": 85,
+      "name": "macro6"
+    },
+    {
+      "number": 86,
+      "name": "macro7"
+    },
+    {
+      "number": 87,
+      "name": "macro8"
+    }
+  ],
+  "NPRN": [
+    {
+      "msb": 0,
+      "lsb": 0,
+      "depth": 7,
+      "name": "Env2 velocity"
+    },
+    {
+      "msb": 0,
+      "lsb": 1,
+      "depth": 7,
+      "name": "Env2 Attack"
+    },
+    {
+      "msb": 0,
+      "lsb": 2,
+      "depth": 7,
+      "name": "Env2 Decay"
+    },
+    {
+      "msb": 0,
+      "lsb": 3,
+      "depth": 7,
+      "name": "Env2 Sustain"
+    },
+    {
+      "msb": 0,
+      "lsb": 4,
+      "depth": 7,
+      "name": "Env2 Release"
+    }
+  ],
+  "COMMENT": "Not exhaustive, a lot is there already.\nAll info from the Circuit Programmers Reference Guide."
+}

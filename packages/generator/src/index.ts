@@ -1,7 +1,3 @@
-import { type Config, genDefinitionText } from "./generator";
+import { type Config, State, genDefinitionText } from "./generator";
 
-import config from "../../../configs/circuit_tracks.json";
-
-const result = genDefinitionText(config as Config);
-
-console.log(result);
+export { type Config, type State, genDefinitionText };
