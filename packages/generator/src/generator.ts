@@ -1,11 +1,11 @@
-type CVGateOut = `CVG1` | `CVG2` | `CVG3` | `CVG4`;
-type CVOut = `CV1` | `CV2` | `CV3` | `CV4`;
-type GateOut = `G1` | `G2` | `G3` | `G4`;
+type CVGateOut = "CVG1" | "CVG2" | "CVG3" | "CVG4";
+type CVOut = "CV1" | "CV2" | "CV3" | "CV4";
+type GateOut = "G1" | "G2" | "G3" | "G4";
 // prettier-ignore
 type MIDIChannels =  1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16
 // prettier-ignore
-type OutPorts = `A` | `B` | `C` | `D` | `USBD` | `USBH` | CVGateOut | CVOut | GateOut;
-type InPorts = `NONE` | `ALLACTIVE` | `A` | `B` | `USBH` | `USBD` | `CVG`;
+type OutPorts = "A" | "B" | "C" | "D" | "USBD" | "USBH" | CVGateOut | CVOut | GateOut;
+type InPorts = "NONE" | "ALLACTIVE" | "A" | "B" | "USBH" | "USBD" | "CVG";
 interface DrumLane {
   number: number | ProgramChangeNumber;
   name: string;
@@ -26,7 +26,7 @@ interface ControlChange {
 }
 type ControlChanges = Array<ControlChange> | null;
 type DrumLanes = Array<DrumLane> | null;
-type ModType = `CC` | `PB` | `AT` | `CV` | `NPRN`;
+type ModType = "CC" | "PB" | "AT" | "CV" | "NPRN";
 type PotNumber = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
 type MaybeComment = Comment | null;
 
@@ -65,11 +65,11 @@ type MaybeStringGenerator = Generator<string | null>;
 export interface Config {
   VERSION: 1;
   TRACKNAME: string | null;
-  TYPE: `POLY` | `DRUM` | `MPE` | null;
+  TYPE: "POLY" | "DRUM" | "MPE" | null;
   OUTPORT: OutPorts | null;
   OUTCHAN: MIDIChannels | null;
   INPORT: InPorts | null;
-  INCHAN: MIDIChannels | `ALL` | null;
+  INCHAN: MIDIChannels | "ALL" | null;
   DRUMLANES: DrumLanes;
   PC: ProgramChanges;
   CC: ControlChanges;
@@ -273,12 +273,12 @@ export function* genTextRows(
   state: State
 ): Generator<string | null> {
   yield `VERSION ${config.VERSION}`;
-  yield `TRACKNAME ${config.TRACKNAME ?? `NULL`}`;
-  yield `TYPE ${config.TYPE ?? `NULL`}`;
-  yield `OUTPORT ${config.OUTPORT ?? `NULL`}`;
-  yield `OUTCHAN ${config.OUTCHAN ?? `NULL`}`;
-  yield `INPORT ${config.INPORT ?? `NULL`}`;
-  yield `INCHAN ${config.INCHAN ?? `NULL`}`;
+  yield `TRACKNAME ${config.TRACKNAME ?? "NULL"}`;
+  yield `TYPE ${config.TYPE ?? "NULL"}`;
+  yield `OUTPORT ${config.OUTPORT ?? "NULL"}`;
+  yield `OUTCHAN ${config.OUTCHAN ?? "NULL"}`;
+  yield `INPORT ${config.INPORT ?? "NULL"}`;
+  yield `INCHAN ${config.INCHAN ?? "NULL"}`;
 
   const genRows = genRowsWithState(state);
 
