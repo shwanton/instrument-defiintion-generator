@@ -1,3 +1,3 @@
-import { type Config, genDefinitionText } from "./generator";
+import { type Config, State, genDefinitionText } from "./generator";
 
-export { type Config, genDefinitionText };
+export { type Config, type State, genDefinitionText };

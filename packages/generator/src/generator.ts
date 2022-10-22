@@ -81,6 +81,7 @@ export interface Config {
 
 export interface State {
   showEmptySections: boolean;
+  filename?: string;
 }
 
 function* genDrumLane(drumLane: DrumLane): Generator<string> {

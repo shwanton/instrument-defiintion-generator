@@ -1,4 +1,4 @@
-import { type Config, genDefinitionText } from "./generator";
+import { type Config, type State, genDefinitionText } from "./generator";
 import path from "path";
 import { readFileSync } from "fs";
 
@@ -10,7 +10,7 @@ const json = readFileSync(
 const config = JSON.parse(json) as Config;
 const state = {
   showEmptySections: false,
-};
+} as State;
 
 const result = genDefinitionText(config, state);
 console.log(result);
