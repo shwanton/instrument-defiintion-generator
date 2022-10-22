@@ -51,7 +51,7 @@ function App() {
             </option>
           ))}
         </select>
-        <button onClick={createDownloadFromConfig}>Download the file!</button>
+        <button onClick={createDownloadFromConfig}>Download</button>
         <a hidden id="foo" ref={downloadAnchorRef}>
           download
         </a>
