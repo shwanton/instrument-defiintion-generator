@@ -1,19 +1,35 @@
 import { type Config, genDefinitionText } from "@packages/generator";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import config from "./rample.json";
 
 function App() {
-  const [downloadUrl, setDownloadUrl] = useState("");
   const downloadAnchorRef = useRef<HTMLAnchorElement>(null);
   const download = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
 
-    const text = genDefinitionText(config as Config);
+    if (downloadAnchorRef.current == null) {
+      return;
+    }
+    const state = {
+      showEmptySections: false,
+    };
+
+    const text = genDefinitionText(config as Config, state);
     const blob = new Blob([text], { type: "text/plain" });
+
     const fileDownloadUrl = URL.createObjectURL(blob);
-    setDownloadUrl(fileDownloadUrl);
+
+    downloadAnchorRef.current.setAttribute("href", fileDownloadUrl);
+    downloadAnchorRef.current.setAttribute("download", "rample.txt");
+
     downloadAnchorRef.current?.click();
+
+    URL.revokeObjectURL(fileDownloadUrl);
   };
+
+  console.log("render", {
+    ref: downloadAnchorRef.current,
+  });
 
   return (
     <div className="App">
@@ -23,12 +39,9 @@ function App() {
       <main>
         <select></select>
         <button onClick={download}>Download the file!</button>
-        <a
-          style={{ visibility: "hidden" }}
-          download="foo.txt"
-          href={downloadUrl}
-          ref={downloadAnchorRef}
-        />
+        <a hidden id="foo" ref={downloadAnchorRef}>
+          download
+        </a>
       </main>
     </div>
   );
